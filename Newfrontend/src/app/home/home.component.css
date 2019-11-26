@@ -1,0 +1,17 @@
+.subbtn{
+    padding-top: 6%;
+}
+.leftcard{
+    padding-left: 7%;
+}
+.rightcard{
+    padding-left: 9%;
+}
+.pad-30{
+    padding-left: 30%;
+}
+.height{
+  bottom:0%;
+  position: fixed;
+  padding-left: 35%;
+}

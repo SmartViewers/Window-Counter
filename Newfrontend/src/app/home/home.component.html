@@ -1,0 +1,66 @@
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 offset-sm-1 leftcard">
+      <div class="card" style="width: 10rem;">
+        <div class="card-body text-center">
+          <img class="card-img-top" src="assets/upload.png" alt="Card image cap">
+          <div class="form-group">
+            <input type="file" name="image" (change)="fileProgress($event)" />
+          </div>
+          <div *ngIf="fileUploadProgress">
+            Upload progress: {{ fileUploadProgress }}
+          </div>
+
+
+          <div class="mb-3" *ngIf="uploadedFilePath">
+            {{uploadedFilePath}}
+          </div>
+
+
+
+          <!-- <a href="#" class="btn btn-primary">upload</a> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2 subbtn">
+      <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    </div>
+    <div class="col-sm-4 rightcard">
+      <div class="card" style="width: 10rem;">
+        <div class="card-body text-center">
+          <img class="card-img-top" src="assets/camera.png" alt="Card image cap">
+
+
+          <button class="btn btn-primary" (click)="onCamera()">Camera</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row pad-30">
+    <div class="col-sm-12">
+      <div *ngIf="previewUrl">
+        <img [src]="previewUrl" height="300" />
+      </div>
+      <div *ngIf="webCam">
+          <webcam [height]="370" [width]="370" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+       [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+        [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)" (initError)="handleInitError($event)">
+      </webcam>
+      <br />
+      <button class="btn btn-secondary" style="margin-right: 10px" (click)="triggerSnapshot();">Take A Snapshot</button>
+      <button class="btn btn-secondary" (click)="toggleWebcam();">close camera</button>
+        </div>
+    </div>
+
+  </div>
+  <br>
+  <div class="row" >
+    <div class="col-sm-12 text-center">
+      <p>Window Count : 
+     <span><input type="text" readonly value="3" disabled></span></p>
+    </div>
+  </div>
+</div>
